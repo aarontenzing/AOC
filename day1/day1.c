@@ -1,10 +1,11 @@
-//Day 1 advent of code -- Counting calories till we reach a empty line, then take max value from array.
+//Day 1 Advent Of Code -- Counting calories till we reach an empty line, then take max value from array.
+//Calculate also top 3 most calories and give the sum.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define MAX_LINE_LENGTH 10
-#define MAX 1000
+#define MAX 500
 
 char calories[MAX_LINE_LENGTH];
 int sum[MAX];
@@ -22,8 +23,6 @@ int main()
 
      while (fgets(calories, MAX_LINE_LENGTH, ptr))
     {
-        /* Print each line */
-        //printf("%s", calories);
         sum[i] += atoi(calories);
         if(calories[0] == '\n')
         {
@@ -38,16 +37,17 @@ int main()
         for(j=0;j<i;j++)
         {
             if(max < sum[j])
+            {
                 max = sum[j];
                 tmp = j;
+            }
         }
-        printf("max=%d  index=%d\n",max,tmp);
+        sum[tmp] = 0;
         tot += max;
         max=0;
-        j=0;
-        sum[tmp] = 0;
         z++;
     }
-    printf("tot: %d, sum%d",tot,i);
+    printf("tot= %d",tot);
+    
 }
 
