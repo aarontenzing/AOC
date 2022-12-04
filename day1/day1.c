@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define MAX_LINE_LENGTH 10
-#define MAX 3
+#define MAX 1000
 
 char calories[MAX_LINE_LENGTH];
 int sum[MAX];
@@ -23,7 +23,7 @@ int main()
      while (fgets(calories, MAX_LINE_LENGTH, ptr))
     {
         /* Print each line */
-        printf("%s", calories);
+        //printf("%s", calories);
         sum[i] += atoi(calories);
         if(calories[0] == '\n')
         {
@@ -31,12 +31,23 @@ int main()
         }
     }
     fclose(ptr);
-    printf("sums: %d\n",i);
-    for(int j=0;j<i;j++)
+
+    int z=0,tmp=0,tot=0,j=0;
+    while(z < 3)
     {
-        if(max < sum[j])
-            max = sum[j];
+        for(j=0;j<i;j++)
+        {
+            if(max < sum[j])
+                max = sum[j];
+                tmp = j;
+        }
+        printf("max=%d  index=%d\n",max,tmp);
+        tot += max;
+        max=0;
+        j=0;
+        sum[tmp] = 0;
+        z++;
     }
-    printf("max: %d",max);
+    printf("tot: %d, sum%d",tot,i);
 }
 
