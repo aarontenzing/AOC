@@ -27,13 +27,29 @@ int switch_case(char input)
         }
 }
 
-int outcome(int x1,int x2) {
+int outcome1(int x1,int x2) {
 
-    if((x2 == 1 && (x1 == 3)) || (x2 == 2 && (x1 == 1)) || (x2 =3 && (x1==2)) )
+    if( ((x2 == 1) && (x1 == 3)) || ((x2 == 2) && (x1 == 1)) || ((x2==3) && (x1==2)) )
     {
         return 1;
     }
-    else if ( (x2 == 3 && (x1 == 1))|| (x2 == 2 && (x1 == 3)) || (x2 == 1 && (x1 == 2)) )
+    else if ( ( (x2 == 3) && (x1 == 1))|| ( (x2 == 2) && (x1 == 3)) || ( (x2 == 1) && (x1 == 2)) )
+    {
+        return 2;
+    }
+    else {
+        return 3;
+    }
+    
+}
+
+int outcome2(int x1,int x2) {
+
+    if( ((x2 == 1) && (x1 == 3)) || ((x2 == 2) && (x1 == 1)) || ((x2==3) && (x1==2)) )
+    {
+        return 1;
+    }
+    else if ( ( (x2 == 3) && (x1 == 1))|| ( (x2 == 2) && (x1 == 3)) || ( (x2 == 1) && (x1 == 2)) )
     {
         return 2;
     }
@@ -65,7 +81,7 @@ int main()
         fgets(buffer,200,file);
 
         x1 = switch_case(p.p1);
-        x2 = switch_case(p.p1);
+        x2 = switch_case(p.p2);
         res = outcome(x1,x2);
         printf("res=%d\n",res);
         
