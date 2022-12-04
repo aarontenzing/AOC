@@ -47,7 +47,5 @@ int main()
         max=0;
         z++;
     }
-    printf("tot= %d",tot);
-    
+    printf("tot= %d",tot);   
 }
-
