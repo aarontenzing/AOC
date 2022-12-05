@@ -8,20 +8,14 @@
 #define MAX 500
 
 char calories[MAX_LINE_LENGTH];
-int sum[MAX];
-int max=0,i=0,a,output;
+int sum[MAX],results[MAX];
+int max=0,i=0,output;
 
 int main()
 {
-
     FILE* ptr = fopen("input.txt","r");
-    if (ptr == NULL) 
-    {
-        printf("no such file.\n");
-        return 0;
-    }
-
-     while (fgets(calories, MAX_LINE_LENGTH, ptr))
+    
+    while (fgets(calories, MAX_LINE_LENGTH, ptr))
     {
         sum[i] += atoi(calories);
         if(calories[0] == '\n')
@@ -31,7 +25,7 @@ int main()
     }
     fclose(ptr);
 
-    int z=0,tmp=0,tot=0,j=0;
+    int z=0,tmp=0,j=0;
     while(z < 3)
     {
         for(j=0;j<i;j++)
@@ -40,12 +34,13 @@ int main()
             {
                 max = sum[j];
                 tmp = j;
+                results[z] = max;
+               
             }
         }
         sum[tmp] = 0;
-        tot += max;
         max=0;
         z++;
     }
-    printf("tot= %d",tot);   
+    printf("solution 1=%d, solution 2=%d",results[0],results[0]+results[1]+results[2]);   
 }
