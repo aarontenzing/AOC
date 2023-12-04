@@ -3,8 +3,6 @@ import re
 file = open('Day 1\input.txt', 'r')
 lines = file.readlines()
 
-letter_values = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
-
 total = 0
 
 def replace_numbers(text):
@@ -36,7 +34,6 @@ total = 0
 for i in lines:
     i = replace_numbers(i)
     res = re.findall(pattern, i)
-    first, last = letter_values[res[0]], letter_values[res[-1]]
-    total += (first * 10) + last
+    total += int(res[0]) * 10 + int(res[-1])
 
 print(f'sum of all of the calibration values? : {total}')   
